@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Willst du mit mir zusammen sein?</title>
+<style>
+body {
+font-family: Arial;
+text-align: center;
+margin-top: 100px;
+background-color: #ffe6f0;
+}
+
+button {
+font-size: 22px;
+padding: 15px 30px;
+margin: 15px;
+border: none;
+border-radius: 12px;
+cursor: pointer;
+}
+
+#yes { background-color: #4CAF50; color: white; }
+#no { background-color: #f44336; color: white; }
+#maybe { background-color: #ff9800; color: white; }
+
+#result {
+margin-top: 30px;
+font-size: 24px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Willst du mit mir zusammen sein? ❤️</h1>
+
+<button id="yes" onclick="answer('Ja ❤️')">Ja</button>
+<button id="no" onclick="answer('Nein 💔')">Nein</button>
+<button id="maybe" onclick="answer('Vielleicht 🤔')">Vielleicht</button>
+
+<div id="result"></div>
+
+<script>
+function answer(text) {
+document.getElementById("result").innerHTML =
+"Du hast gewählt: " + text;
+}
+</script>
+
+</body>
+</html>
