@@ -10,7 +10,6 @@ body {
   text-align: center;
   margin-top: 60px;
   background-color: #ffe6f0;
-  transition: transform 0.2s ease;
 }
 
 h1 {
@@ -26,20 +25,9 @@ button {
   cursor: pointer;
 }
 
-#yes {
-  background-color: #4CAF50;
-  color: white;
-}
-
-#no {
-  background-color: #f44336;
-  color: white;
-}
-
-#maybe {
-  background-color: #ff9800;
-  color: white;
-}
+#yes { background-color: #4CAF50; color: white; }
+#no { background-color: #f44336; color: white; }
+#maybe { background-color: #ff9800; color: white; }
 
 #startBtn {
   background-color: #2196F3;
@@ -64,14 +52,17 @@ button {
 
 <br><br>
 
-<button id="yes" onclick="answer()">Ja ❤️</button>
-<button id="no" onclick="answer()">Nein 💔</button>
-<button id="maybe" onclick="answer()">Vielleicht 🤔</button>
+<button onclick="answer()">Ja ❤️</button>
+<button onclick="answer()">Nein 💔</button>
+<button onclick="answer()">Vielleicht 🤔</button>
 
 <div id="result"></div>
 
-<!-- Hintergrundmusik -->
+<!-- Hintergrund Herzklopfen -->
 <audio id="bgMusic" src="herzklopf.mp3" loop></audio>
+
+<!-- Jubel Sound -->
+<audio id="cheerSound" src="Jubel.mp3"></audio>
 
 <script>
 
@@ -83,15 +74,18 @@ function startMusic() {
 }
 
 function answer() {
+
+  // Herzklopfen stoppen
   var music = document.getElementById("bgMusic");
   music.pause();
   music.currentTime = 0;
 
-  document.body.style.transform = "scale(1.03)";
-  setTimeout(function(){
-    document.body.style.transform = "scale(1)";
-  }, 200);
+  // Jubel Sound abspielen
+  var cheer = document.getElementById("cheerSound");
+  cheer.volume = 1.0;
+  cheer.play();
 
+  // Text anzeigen
   document.getElementById("result").innerHTML =
     "Du hast gewählt: Ja ❤️<br><br>Ich wusste es 😌❤️";
 }
