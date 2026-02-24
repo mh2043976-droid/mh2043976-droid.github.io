@@ -2,9 +2,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Willst du mit mir zusammen sein? ❤️</title>
+<title>Willst du mich in einer Beziehung ertragen? ❤️</title>
 
 <style>
+
 body {
   font-family: Arial;
   text-align: center;
@@ -25,9 +26,20 @@ button {
   cursor: pointer;
 }
 
-#yes { background-color: #4CAF50; color: white; }
-#no { background-color: #f44336; color: white; }
-#maybe { background-color: #ff9800; color: white; }
+#yes {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#no {
+  background-color: #f44336;
+  color: white;
+}
+
+#maybe {
+  background-color: #ff9800;
+  color: white;
+}
 
 #result {
   margin-top: 30px;
@@ -35,10 +47,13 @@ button {
   font-weight: bold;
 }
 
+/* GIF perfekt zentriert */
 #gif {
-  margin-top: 20px;
   display: none;
+  margin: 20px auto;
+  width: 250px;
 }
+
 </style>
 
 </head>
@@ -49,13 +64,13 @@ button {
 
 <br>
 
-<button onclick="answer()">Ja ❤️</button>
-<button onclick="answer()">Nein 💔</button>
-<button onclick="answer()">Vielleicht 🤔</button>
+<button id="yes" onclick="answer()">Ja ❤️</button>
+<button id="no" onclick="answer()">Nein 💔</button>
+<button id="maybe" onclick="answer()">Vielleicht 🤔</button>
 
 <div id="result"></div>
 
-<img id="gif" src="gif.gif" width="250">
+<img id="gif" src="gif.gif">
 
 <audio id="cheerSound" src="Jubel.mp3"></audio>
 
@@ -63,17 +78,17 @@ button {
 
 function answer() {
 
-  // Jubel Sound
+  // Jubel Sound abspielen
   var cheer = document.getElementById("cheerSound");
   cheer.currentTime = 0;
   cheer.play();
 
-  // GIF anzeigen
-  document.getElementById("gif").style.display = "block";
-
   // Text anzeigen
   document.getElementById("result").innerHTML =
     "Du hast gewählt: Ja ❤️<br><br>Ich wusste es 😌❤️";
+
+  // GIF anzeigen (zentriert)
+  document.getElementById("gif").style.display = "block";
 
 }
 
