@@ -34,11 +34,16 @@ button {
   font-size: 26px;
   font-weight: bold;
 }
+
+#gif {
+  margin-top: 20px;
+  display: none;
+}
 </style>
 
 </head>
 
-<body onclick="startMusicOnce()">
+<body>
 
 <h1>Willst du mit mir zusammen sein? ❤️</h1>
 
@@ -50,37 +55,23 @@ button {
 
 <div id="result"></div>
 
-<!-- Hintergrund Herzklopfen -->
-<audio id="bgMusic" src="Herzklopf.mp3" loop></audio>
+<img id="gif" src="gif.gif" width="250">
 
-<!-- Jubel Sound -->
 <audio id="cheerSound" src="Jubel.mp3"></audio>
 
 <script>
 
-var musicStarted = false;
-
-function startMusicOnce() {
-
-  if (!musicStarted) {
-    var music = document.getElementById("bgMusic");
-    music.volume = 0.7;
-    music.play();
-    musicStarted = true;
-  }
-
-}
-
 function answer() {
 
-  var music = document.getElementById("bgMusic");
-  music.pause();
-  music.currentTime = 0;
-
+  // Jubel Sound
   var cheer = document.getElementById("cheerSound");
-  cheer.volume = 1.0;
+  cheer.currentTime = 0;
   cheer.play();
 
+  // GIF anzeigen
+  document.getElementById("gif").style.display = "block";
+
+  // Text anzeigen
   document.getElementById("result").innerHTML =
     "Du hast gewählt: Ja ❤️<br><br>Ich wusste es 😌❤️";
 
