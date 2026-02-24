@@ -1,51 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Willst du mit mir zusammen sein?</title>
+<meta charset="utf-8">
+<title>Willst du mit mir zusammen sein? ❤️</title>
+
 <style>
 body {
-font-family: Arial;
-text-align: center;
-margin-top: 100px;
-background-color: #ffe6f0;
+  font-family: Arial;
+  text-align: center;
+  margin-top: 60px;
+  background-color: #ffe6f0;
+  transition: transform 0.2s ease;
+}
+
+h1 {
+  font-size: 32px;
 }
 
 button {
-font-size: 22px;
-padding: 15px 30px;
-margin: 15px;
-border: none;
-border-radius: 12px;
-cursor: pointer;
+  font-size: 22px;
+  padding: 15px 30px;
+  margin: 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
-#yes { background-color: #4CAF50; color: white; }
-#no { background-color: #f44336; color: white; }
-#maybe { background-color: #ff9800; color: white; }
+#yes {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#no {
+  background-color: #f44336;
+  color: white;
+}
+
+#maybe {
+  background-color: #ff9800;
+  color: white;
+}
+
+#startBtn {
+  background-color: #2196F3;
+  color: white;
+  font-size: 18px;
+}
 
 #result {
-margin-top: 30px;
-font-size: 24px;
+  margin-top: 30px;
+  font-size: 26px;
+  font-weight: bold;
 }
 </style>
+
 </head>
 
 <body>
 
 <h1>Willst du mit mir zusammen sein? ❤️</h1>
 
-<button id="yes" onclick="answer('Ja ❤️')">Ja</button>
-<button id="no" onclick="answer('Nein 💔')">Nein</button>
-<button id="maybe" onclick="answer('Vielleicht 🤔')">Vielleicht</button>
+<button id="startBtn" onclick="startMusic()">🎵 Musik starten</button>
+
+<br><br>
+
+<button id="yes" onclick="answer()">Ja ❤️</button>
+<button id="no" onclick="answer()">Nein 💔</button>
+<button id="maybe" onclick="answer()">Vielleicht 🤔</button>
 
 <div id="result"></div>
 
+<!-- Hintergrundmusik -->
+<audio id="bgMusic" src="herzklopf.mp3" loop></audio>
+
 <script>
-function answer(text) {
-document.getElementById("result").innerHTML =
-"Du hast gewählt: " + text;
+
+function startMusic() {
+  var music = document.getElementById("bgMusic");
+  music.volume = 0.7;
+  music.play();
+  document.getElementById("startBtn").style.display = "none";
 }
+
+function answer() {
+  var music = document.getElementById("bgMusic");
+  music.pause();
+  music.currentTime = 0;
+
+  document.body.style.transform = "scale(1.03)";
+  setTimeout(function(){
+    document.body.style.transform = "scale(1)";
+  }, 200);
+
+  document.getElementById("result").innerHTML =
+    "Du hast gewählt: Ja ❤️<br><br>Ich wusste es 😌❤️";
+}
+
 </script>
-<audio id="bgMusic" src="bg.mp3" loop></audio>
+
 </body>
 </html>
