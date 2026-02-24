@@ -54,6 +54,15 @@ button {
   width: 250px;
 }
 
+/* Neuer Liebestext */
+#loveText {
+  display: none;
+  margin-top: 20px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #e91e63;
+}
+
 </style>
 
 </head>
@@ -72,6 +81,8 @@ button {
 
 <img id="gif" src="gif.gif">
 
+<div id="loveText"></div>
+
 <audio id="cheerSound" src="Jubel.mp3"></audio>
 
 <script>
@@ -87,8 +98,17 @@ function answer() {
   document.getElementById("result").innerHTML =
     "Du hast gewählt: Ja ❤️<br><br>Ich wusste es 😌❤️";
 
-  // GIF anzeigen (zentriert)
+  // GIF anzeigen
   document.getElementById("gif").style.display = "block";
+
+  // Nach 2 Sekunden Liebestext anzeigen
+  setTimeout(function() {
+
+    var love = document.getElementById("loveText");
+    love.innerHTML = "Ich liebe dich meine süße ❤️";
+    love.style.display = "block";
+
+  }, 2000);
 
 }
 
